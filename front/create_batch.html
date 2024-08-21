@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Batch</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Create Batch</h2>
+        <form id="batchForm">
+            <div class="form-group">
+                <label for="batch_name">Batch Name</label>
+                <input type="text" class="form-control" id="batch_name" required>
+            </div>
+            <div class="form-group">
+                <label for="start_date">Start Date</label>
+                <input type="date" class="form-control" id="start_date" required>
+            </div>
+            <div class="form-group">
+                <label for="end_date">End Date</label>
+                <input type="date" class="form-control" id="end_date" required>
+            </div>
+            <div class="form-group">
+                <label for="pb_session">PB Session</label>
+                <input type="text" class="form-control" id="pb_session" required>
+            </div>
+            <div class="form-group">
+                <label for="pb_trainer_name">PB Trainer Name</label>
+                <input type="text" class="form-control" id="pb_trainer_name" required>
+            </div>
+            <div class="form-group">
+                <label for="pb_session_link">PB Session Link</label>
+                <input type="url" class="form-control" id="pb_session_link" required>
+            </div>
+            <div class="form-group">
+                <label for="pb_recording_link">PB Recording Link</label>
+                <input type="url" class="form-control" id="pb_recording_link" required>
+            </div>
+            <div class="form-group">
+                <label for="sk_session">SK Session</label>
+                <input type="text" class="form-control" id="sk_session" required>
+            </div>
+            <div class="form-group">
+                <label for="sk_trainer_name">SK Trainer Name</label>
+                <input type="text" class="form-control" id="sk_trainer_name" required>
+            </div>
+            <div class="form-group">
+                <label for="sk_session_link">SK Session Link</label>
+                <input type="url" class="form-control" id="sk_session_link" required>
+            </div>
+            <div class="form-group">
+                <label for="sk_recording_link">SK Recording Link</label>
+                <input type="url" class="form-control" id="sk_recording_link" required>
+            </div>
+            <div class="form-group">
+                <label for="apt_session">APT Session</label>
+                <input type="text" class="form-control" id="apt_session" required>
+            </div>
+            <div class="form-group">
+                <label for="apt_trainer_name">APT Trainer Name</label>
+                <input type="text" class="form-control" id="apt_trainer_name" required>
+            </div>
+            <div class="form-group">
+                <label for="apt_session_link">APT Session Link</label>
+                <input type="url" class="form-control" id="apt_session_link" required>
+            </div>
+            <div class="form-group">
+                <label for="apt_recording_link">APT Recording Link</label>
+                <input type="url" class="form-control" id="apt_recording_link" required>
+            </div>
+            <div class="form-group">
+                <label for="domain_session">Domain Session</label>
+                <input type="text" class="form-control" id="domain_session" required>
+            </div>
+            <div class="form-group">
+                <label for="domain_trainer_name">Domain Trainer Name</label>
+                <input type="text" class="form-control" id="domain_trainer_name" required>
+            </div>
+            <div class="form-group">
+                <label for="domain_session_link">Domain Session Link</label>
+                <input type="url" class="form-control" id="domain_session_link" required>
+            </div>
+            <div class="form-group">
+                <label for="domain_recording_link">Domain Recording Link</label>
+                <input type="url" class="form-control" id="domain_recording_link" required>
+            </div>
+            <div class="form-group">
+                <label for="batch_status">Batch Status</label>
+                <input type="text" class="form-control" id="batch_status" required>
+            </div>
+            <div class="form-group">
+                <label for="comments">Comments</label>
+                <textarea class="form-control" id="comments" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script src="create_batch.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Batch</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2>View and Update Batch</h2>
+        <form id="batchForm">
+            <div class="form-group">
+                <label for="batchName">Batch Name</label>
+                <input type="text" class="form-control" id="batchName" required>
+            </div>
+            <div class="form-group">
+                <label for="startDate">Start Date</label>
+                <input type="date" class="form-control" id="startDate" required>
+            </div>
+            <div class="form-group">
+                <label for="endDate">End Date</label>
+                <input type="date" class="form-control" id="endDate" required>
+            </div>
+            <!-- Additional fields can be added here as needed -->
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-secondary" onclick="goBack()">Back</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+        // Function to get the batch ID from the URL
+        function getBatchIdFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('batchId');
+        }
+
+        // Function to fetch the batch details by ID
+        function fetchBatchDetails(batchId) {
+            fetch(`http://127.0.0.1:8000/courses/batch/${batchId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    const batch = data.data; // Assuming your API returns a 'data' field with the batch info
+                    document.getElementById('batchName').value = batch.batch_name;
+                    document.getElementById('startDate').value = batch.start_date;
+                    document.getElementById('endDate').value = batch.end_date;
+                })
+                .catch(error => console.error('Error fetching batch details:', error));
+        }
+
+        // Function to handle form submission for updating the batch
+        document.getElementById('batchForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            const batchId = getBatchIdFromURL();
+            const updatedBatch = {
+                batch_name: document.getElementById('batchName').value,
+                start_date: document.getElementById('startDate').value,
+                end_date: document.getElementById('endDate').value,
+                // Add other fields if needed
+            };
+
+            fetch(`http://127.0.0.1:8000/courses/batch/${batchId}/`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedBatch),
+            })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Batch updated successfully!');
+                    } else {
+                        alert('Error updating batch!');
+                    }
+                })
+                .catch(error => console.error('Error updating batch:', error));
+        });
+
+        // Function to handle the back button click
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+
+        // Fetch batch details when the page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            const batchId = getBatchIdFromURL();
+            fetchBatchDetails(batchId);
+        });
+    </script>
+</body>
+
+</html>
